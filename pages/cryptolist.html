@@ -24,7 +24,8 @@
         </div>
     </header>
     <main>
-        <div class="cryptolist_container" id="cryptolist_container">
+        <div class="cryptolist_container" >
+            <div id="cryptolist_container">
             <div class="crypto" style="color: #8B9999 ; font-size:24px ; font-weight:300 ;" >
                 <div>#</div>
                 <div>Name</div>
@@ -32,9 +33,10 @@
                 <div> 24h change</div>
                 <div></div>
             </div>
-         
-            <button class="button_more">Show more</button>
         </div>
+        <button class="button_more" onclick="showMore()" id="buttonShowMore">Show more</button>
+        </div>
+
     </main>
     <footer>
         <div class="footer">
@@ -58,6 +60,8 @@ const options = {
 };
 
 let listofcrypto = document.getElementById("cryptolist_container")
+let showMoreButton = document.getElementById("buttonShowMore")
+
 let cryptocoins = {};
 
 
@@ -76,6 +80,7 @@ name.innerHTML = `<img src="${el.icon}" width="32px" height="32px"/> ${el.id}`;
 const price = document.createElement("div");
 price.innerHTML = "$" + el.price.toFixed(6);
 const change = document.createElement("div");
+el.priceChange1d >= 0 ? change.style.color = "green" : change.style.color = "red"
 change.innerHTML = el.priceChange1d;
 // elems.prepend(change, name ,number ,price)
 elems.prepend(number, name ,price ,change)
@@ -86,6 +91,39 @@ elems.prepend(number, name ,price ,change)
     console.log(el)
   }))
   .catch(err => console.error(err));
+
+const showMore = () =>{
+ 
+    showMoreButton.style.display = "none";
+
+
+    fetch('https://openapiv1.coinstats.app/coins?limit=100&rank~greaterThan=6', options)
+  .then(res =>res.json())
+  .then(res => res.result.map(el =>{
+    const elems = document.createElement("div")
+elems.className = "crypto"
+const number = document.createElement("div");
+number.innerHTML = el.rank;
+const  name = document.createElement("div");
+const icon = document.createElement("img")
+icon.width = 32;
+icon.height = 32;
+name.innerHTML = `<img src="${el.icon}" width="32px" height="32px"/> ${(el.id.toString().slice(0,20))}`;
+const price = document.createElement("div");
+price.innerHTML = "$" + el.price.toFixed(4);
+const change = document.createElement("div");
+el.priceChange1d >= 0 ? change.style.color = "green" : change.style.color = "red"
+change.innerHTML = el.priceChange1d;
+// elems.prepend(change, name ,number ,price)
+elems.prepend(number, name ,price ,change)
+
+
+
+    listofcrypto.append(elems)
+    console.log(el)
+  }))
+  .catch(err => console.error(err));
+}
 
 
 </script>
