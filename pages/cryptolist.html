@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/cryptolist.css">
+</head>
+<body>
+    <div class="wrapper">
+    <header>
+        <div class="header">
+            <div class="pagesHeader" >
+                <div><a href="../pages/main.html"> <h1>Coin<span style="font-weight: bold;">Change</span></h1></a> </div>
+                <div><a href="../pages/trade.html"><h1>Trade</h1>  </a></div>
+                <div> <a href="../pages/cryptolist.html"><h1>Cryptovalue</h1></a></div>
+            </div>
+            <div class="actionHeader">
+                <div><input type="text" placeholder="Search" id="search" style="background-color:#0D0D0D ;" ></div>
+                <div> <img src="../img/Settings.svg" /></div>
+                <div><a href="../pages/login.html"><img src="../img/profile.svg" /></a></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="cryptolist_container" id="cryptolist_container">
+            <div class="crypto" style="color: #8B9999 ; font-size:24px ; font-weight:300 ;" >
+                <div>#</div>
+                <div>Name</div>
+                <div>Price</div>
+                <div> 24h change</div>
+                <div></div>
+            </div>
+         
+            <button class="button_more">Show more</button>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div><p>Інформація про компанію</p></div>
+            <div><p>Підтримка</p></div>
+            <div><p>Політикі</p></div>
+            <div class="logosNetwork">
+                <img src="../img/XNetwork.svg" alt=""><img src="../img/Telegram_Logo.png" alt=""><img src="../img/mdi_youtube.svg" alt="">
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    'X-API-KEY': 'KznJk4LYzp1YNPZeND9uArRowEM/POicu6f4wwMWzts='
+  }
+};
+
+let listofcrypto = document.getElementById("cryptolist_container")
+let cryptocoins = {};
+
+
+ fetch('https://openapiv1.coinstats.app/coins?limit=5', options)
+  .then(res =>res.json())
+  .then(res => res.result.map(el =>{
+    const elems = document.createElement("div")
+elems.className = "crypto"
+const number = document.createElement("div");
+number.innerHTML = el.rank;
+const  name = document.createElement("div");
+const icon = document.createElement("img")
+icon.width = 32;
+icon.height = 32;
+name.innerHTML = `<img src="${el.icon}" width="32px" height="32px"/> ${el.id}`;
+const price = document.createElement("div");
+price.innerHTML = "$" + el.price.toFixed(6);
+const change = document.createElement("div");
+change.innerHTML = el.priceChange1d;
+// elems.prepend(change, name ,number ,price)
+elems.prepend(number, name ,price ,change)
+
+
+
+    listofcrypto.append(elems)
+    console.log(el)
+  }))
+  .catch(err => console.error(err));
+
+
+</script>
+</body>
+</html>
