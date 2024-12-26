@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/profile.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header">
+                <div class="pagesHeader" >
+                    <div><a href="../pages/main.html"> <h1>Coin<span style="font-weight: bold;">Change</span></h1></a> </div>
+                    <div><a href="../pages/trade.html"><h1>Trade</h1>  </a></div>
+                    <div> <a href="../pages/cryptolist.html"><h1>Cryptovalue</h1></a></div>
+                </div>
+                <div class="actionHeader">
+                    <div><input type="text" placeholder="Search" id="search" style="background-color:#0D0D0D ;" ></div>
+                    <div> <img src="../img/Settings.svg" /></div>
+                    <div><a href="../pages/login.html"><img src="../img/profile.svg" /></a></div>
+                </div>
+            </div>
+        </header>
+        <main>
+
+            <div class="containerItems">
+                <div class="item">
+                    <img src="../img/avatar.svg"  />
+                
+                </div>
+                <div class="item">
+                    <h3>username</h3>
+                    <h3>user@gmail.com</h3>
+                    
+                    <a href="../pages/login.html"><button class="logout" onclick="logout()">Logout</button></a>
+                
+                </div>
+                
+            </div>
+
+            <div class="operations">
+
+                <h2>Last Activity</h2>
+                <hr>
+                <p>None operations now</p>
+            </div>
+
+        </main>
+        <footer>
+            <div class="footer">
+                <div><p>Інформація про компанію</p></div>
+                <div><p>Підтримка</p></div>
+                <div><p>Політикі</p></div>
+                <div class="logosNetwork">
+                    <img src="../img/XNetwork.svg" alt=""><img src="../img/Telegram_Logo.png" alt=""><img src="../img/mdi_youtube.svg" alt="">
+                </div>
+            </div>
+        </footer>
+    </div>
+<script>
+
+
+
+const isAuth = JSON.parse(localStorage.getItem('isAuth'))
+// isAuth.isAuth ? alert("ok"): alert("ne ok")
+
+if(isAuth === null){
+   window.location.href = "http://127.0.0.1:5500/pages/login.html"
+}
+
+const logout = () =>{
+    localStorage.setItem('isAuth', JSON.stringify({isAuth : null}))
+}
+
+
+</script>
+
+</body>
+</html>

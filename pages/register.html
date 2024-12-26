@@ -25,24 +25,27 @@
     </header>
     <main>
         <div class="main" >
-       <form>
+       <form id="formRegister">
      
-            <label for="email">Email or name user</label>
+            <label for="email">Email </label>
             <div class="input_container">
-            <input type="email" placeholder=" Email" id="email" name="email">
+            <input type="email" placeholder=" Email" id="email" name="email" required> 
         </div>
        
             <label for="password" >Password</label>
             <div class="input_container">
-            <input type="password" placeholder=" ****" id="password" name="">
+            <input type="password" placeholder=" ****" id="password" name="password" required>
         </div>
-     
-        <button class="button_login">Sign up</button>
-        <p style="text-align: right; color: #828282; font-size: 24px;">Doesn’t have account?</p>
+        
+        <label for="password" >Repeat password</label>
+        <div class="input_container">
+        <input type="password" placeholder=" ****" id="passwordrepeat" name="repeat" required>
+    </div>
+
+        <button class="button_login" type="submit">Register</button>
+        <a href="../pages/login.html"><p style="text-align: right; color: #828282; font-size: 24px;"> Have account?</p></a>
  
        </form>
-       <hr style="border: 1px solid #484747; width: 500px;">
-       <button class="button_google"><img src="../img/devicon_google.svg"  />Continue with Google</button>
     </div>
     
 
@@ -58,5 +61,36 @@
         </div>
     </footer>
 </div>
+
+<script>
+    const form = document.getElementById('formRegister');
+
+    const isAuth = JSON.parse(localStorage.getItem('isAuth'))
+
+if(isAuth){
+    window.location.href = "http://127.0.0.1:5500/pages/profile.html"
+}
+
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); 
+
+  const name = form.elements.email.value;
+  const password = form.elements.password.value;
+  const repeatpass = form.elements.repeat.value
+console.log(password)
+console.log(repeatpass)
+
+    if(password === repeatpass){
+
+  localStorage.setItem('profileData', JSON.stringify({ name, password }));
+  localStorage.setItem('isAuth', JSON.stringify({isAuth: true}))
+    window.location.href = "http://127.0.0.1:5500/pages/profile.html"
+    }
+    else{
+        alert("Invalid password")
+    }
+});
+</script>
 </body>
 </html>
