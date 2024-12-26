@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+body{
+    background-image: url("../img/bg.svg");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    margin: 0;
+}
+
+a, a:visited {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+
+#search{
+    background-color: #0D0D0D;
+    color: #828282;
+    border: 1px solid #B5B5B5;
+    height: 80px;
+    border-radius: 15px;
+    width: 240px;
+    font-size: 32px; 
+    text-align: center;
+    background: url(../img/Search.svg) no-repeat 32px 5px;
+    background-size: 24px 90%;
+}
+
+#searchLarge{
+    background-color: #0D0D0D;
+    color: #828282;
+    border: 1px solid #B5B5B5;
+    height: 80px;
+    border-radius: 15px;
+    width: 720px;
+    font-size: 32px; 
+    text-align: center;
+    background: url(../img/Search.svg) no-repeat 32px 5px;
+    background-size: 24px 90%;
+    margin: 50px auto;
+    font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.header{
+    display: flex;
+    justify-content: space-around;
+    height: 100px;
+    background-color: #272727;
+}
+
+.pagesHeader {
+    color: white;
+    gap: 45px   ;
+    display: flex;
+    text-align: center;
+    justify-content: flex-start;
+    height: 100px;
+}
+
+.pagesHeader a h1{
+    height: 100px;
+    font-size: 36px;
+}
+.actionHeader{
+    display: flex;
+    justify-content: flex-end;
+    gap: 206px;
+
+
+}
+.pagesHeader h1{
+    width: 240px;
+}
+
+h1{
+    font-weight: 300;
+}
+
+
+
+
+.Go{
+    background-color: #FF9332;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: 50px auto;
+    border-radius: 15px;
+    border: none;
+    width: 300px;
+    height: 80px;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.footer{
+    height: 100px;
+    background-color: #272727;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-top: auto;
+    text-align: center;
+    
+}
+
+.footer img{
+    width: 64px;
+    height: 64px;
+}
+
+.footer .logosNetwork{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px   ;
+}
+
+
+.wrapper
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main{
+    flex-grow: 1;
+}
+
+
+.main{
+    /* justify-content: center;
+    display: flex;
+    align-items: center; */
+    text-align: center;
+    margin-top: 200px;
+  
+}
+
+form{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+input{
+    width: 500px;
+    height: 80px;
+    background-color: #0D0D0D;
+    border-radius: 10px;
+    font-size: 32px;
+    color: #828282;
+    border:  1px solid #B5B5B5 ;
+    /* border-top: 1px solid #B5B5B5 ; */
+    border-bottom: 1px solid #B5B5B5 ;;
+
+}
+
+label{
+    font-size: 24px;
+    color: white;
+    font-weight: 300;
+}
+.input_container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    margin: 0;
+    padding: 0%;
+}
+
+select{
+    margin-top: 1px;
+    height: 80px;
+    background-color: #0D0D0D;
+    color: #828282;
+    border-radius: 10px;
+    /* border:  1px solid #B5B5B5 ; */
+    margin-left: -70px;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    width: 65px;
+}
+
+.button_login{
+    width: 500px;
+    height: 80px;
+    text-align: center;
+    color: black;
+    font-size: 36px;
+    font-weight: 300px  ;
+    border-radius: 15px;
+    background-color: #FF9332   ;
+    margin-top: 50px;
+}
+
+.button_google{
+text-align: left;
+font-size: 36px;
+font-weight: 300;
+border: 1px solid #8A8A8A;
+    width: 500px;
+    height: 100px;
+    background-color: #262626;
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+
+
+.cryptolist_container{
+    border-image: linear-gradient(to bottom, #2F2F2F 0%, #959595 100%) 1;
+    border-style: solid;
+    border-width: 4px;
+    clip-path: inset(0 round 24px);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+background-color: #262625;
+min-height: 480px;
+    margin: 0 30% 0 30%;
+margin-top: 100px;
+    }
+
+
+    .button_trade{
+        background-color: #FF9332;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        margin: 50px auto;
+        border-radius: 15px;
+        border: none;
+        width: 500px;
+        height: 80px;
+        font-size: 40px;
+        font-weight: 400;
+    }
+ 

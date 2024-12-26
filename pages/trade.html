@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/trade.css">
+</head>
+<body>
+    <div class="wrapper">
+    <header>
+        <div class="header">
+            <div class="pagesHeader" >
+                <div><a href="../pages/main.html"> <h1>Coin<span style="font-weight: bold;">Change</span></h1></a> </div>
+                <div><a href="../pages/trade.html"><h1>Trade</h1>  </a></div>
+                <div> <a href="../pages/cryptolist.html"><h1>Cryptovalue</h1></a></div>
+            </div>
+            <div class="actionHeader">
+                <div><input type="text" placeholder="Search" id="search" style="background-color:#0D0D0D ;" ></div>
+                <div> <img src="../img/Settings.svg" /></div>
+                <div><a href="../pages/login.html"><img src="../img/profile.svg" /></a></div>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <div class="cryptolist_container" >
+            <div>
+            <form>
+                <label>Pay</label>
+                <div class="input_container"><input type="text" /><select><option value="Bitcoin">BTC</option>
+                    <option value="Ethereum">ETH</option>
+                        <option value="USDT">USDT</option>
+                </select></div>
+                <label>Get</label>
+                <div class="input_container"><input type="text" /><select><option value="Bitcoin">BTC</option>
+                    <option value="Ethereum">ETH</option>
+                        <option value="Tether">BTC</option>
+                </select></div>
+            </form>
+            <button class="button_trade">Trade value</button>
+        </div>
+
+        </div>
+  
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div><p>Інформація про компанію</p></div>
+            <div><p>Підтримка</p></div>
+            <div><p>Політикі</p></div>
+            <div class="logosNetwork">
+                <img src="../img/XNetwork.svg" alt=""><img src="../img/Telegram_Logo.png" alt=""><img src="../img/mdi_youtube.svg" alt="">
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    'X-API-KEY': 'KznJk4LYzp1YNPZeND9uArRowEM/POicu6f4wwMWzts='
+  }
+};
+
+
+
+
+
+</script>
+</body>
+</html>
