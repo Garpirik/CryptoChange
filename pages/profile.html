@@ -34,7 +34,7 @@
                     <h3>username</h3>
                     <h3>user@gmail.com</h3>
                     
-                    <a href="../pages/login.html"><button class="logout" onclick="logout()">Logout</button></a>
+                    <button class="logout" onclick="logoutProfile()">Logout</button>
                 
                 </div>
                 
@@ -44,7 +44,16 @@
 
                 <h2>Last Activity</h2>
                 <hr>
-                <p>None operations now</p>
+                <p id="operations">None operations now</p>
+                <!-- style="display: none;"  -->
+                <div id="hasOperations" >
+                    <div class="operations_container">
+                        <div>Operation</div>
+                        <div>From</div>
+                        <div>To</div>
+                        <div>Value</div>
+                    </div>
+                </div>
             </div>
 
         </main>
@@ -61,6 +70,36 @@
     </div>
 <script>
 
+const logoutProfile = () =>{
+    localStorage.setItem('isAuth', JSON.stringify(null))
+     window.location.href = "http://127.0.0.1:5500/pages/login.html"
+}
+
+const operationTitle = document.getElementById("operations")
+
+
+const operations = document.getElementById("hasOperations")
+
+const storedData = JSON.parse(localStorage.getItem('session'));
+storedData.arrOperations.length === 0 ? "": operationTitle.remove()
+storedData.arrOperations.map(el =>{
+    console.log(el)
+    const NodeDiv = document.createElement("div");
+    NodeDiv.className = "operations_container"
+    NodeDiv.style.fontSize = "20px";
+
+    const operationDiv = document.createElement("div")
+    operationDiv.innerHTML = el.operation
+    const fromDiv = document.createElement("div")
+    fromDiv.innerHTML = el.from
+    const toDiv = document.createElement("div")
+    toDiv.innerHTML = el.to
+    const valueDiv = document.createElement("div")
+    valueDiv.innerHTML = el.valuefrom;
+    NodeDiv.prepend(operationDiv, fromDiv, toDiv, valueDiv);
+    operations.append(NodeDiv)
+    
+})
 
 
 const isAuth = JSON.parse(localStorage.getItem('isAuth'))
@@ -70,9 +109,7 @@ if(isAuth === null){
    window.location.href = "http://127.0.0.1:5500/pages/login.html"
 }
 
-const logout = () =>{
-    localStorage.setItem('isAuth', JSON.stringify({isAuth : null}))
-}
+
 
 
 </script>

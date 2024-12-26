@@ -61,7 +61,7 @@
 <script>    const form = document.getElementById('formLogin');
 const isAuth = JSON.parse(localStorage.getItem('isAuth'))
 
-if(isAuth){
+if(isAuth !== null){
     window.location.href = "http://127.0.0.1:5500/pages/profile.html"
 }
 
@@ -74,8 +74,8 @@ if(isAuth){
 
       const storedData = JSON.parse(localStorage.getItem('profileData'));
       localStorage.setItem('isAuth', JSON.stringify({isAuth: true}))
-    
-        if(password === storedData.password && name === storedData.name ){
+        console.log()
+        if(password === storedData.password && name === storedData.name && JSON.parse(localStorage.getItem('isAuth') !== null)  ){
         window.location.href = "http://127.0.0.1:5500/pages/profile.html"
         }
         else{

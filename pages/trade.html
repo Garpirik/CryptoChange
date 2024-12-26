@@ -39,7 +39,7 @@
                         <option value="USDT">USDT</option>
                 </select></div>
             </form>
-            <button class="button_trade">Trade value</button>
+            <button class="button_trade" onclick="addOperation()">Trade value</button>
         </div>
 
         </div>
@@ -69,7 +69,7 @@ const options = {
 
 
 
-
+let arrOperations = []
 
 
 let outputValues = () =>{
@@ -81,13 +81,13 @@ const inputPay = document.getElementById("input_pay").value;
 const inputGet =document.getElementById("input_get").value;
 
     let value = inputPay;
-    let arrOperations = []
+ 
     {
     fetch(`https://openapiv1.coinstats.app/coins?limit=1&name=${paySelectedValue}`, options).then(res => res.json()).then(res =>{
         value= value * res.result[0].price
     fetch(`https://openapiv1.coinstats.app/coins?limit=1&name=${getSelectedValue}`, options)
   .then(res => res.json())
-  .then(res =>   document.getElementById("input_get").value = Number(value   / res.result[0].price), arrOperations.push( JSON.parse(localStorage.getItem('session')) || []), arrOperations.push({from :paySelectedValue , to: getSelectedValue, valuefrom: value}))
+  .then(res =>   document.getElementById("input_get").value = Number(value   / res.result[0].price) )
   .catch(err => console.error(err));
 
 
@@ -99,6 +99,23 @@ const inputGet =document.getElementById("input_get").value;
 }
 
 //
+
+const addOperation = () => {
+    const paySelect = document.getElementById("select_pay");
+let paySelectedValue = paySelect.options[paySelect.selectedIndex].value;
+const getSelect = document.getElementById("select_get");
+let getSelectedValue = getSelect.options[getSelect.selectedIndex].value;
+const inputPay = document.getElementById("input_pay").value;
+const inputGet =document.getElementById("input_get").value;
+
+
+
+// arrOperations.push( JSON.parse(localStorage.getItem('session')) || []);
+arrOperations.push({operation : "Send", from :paySelectedValue , to: getSelectedValue, valuefrom: inputPay})
+localStorage.setItem("session",JSON.stringify({arrOperations}) )
+
+console.log(JSON.parse(localStorage.getItem("session")))
+}
 </script>
 </body>
 </html>

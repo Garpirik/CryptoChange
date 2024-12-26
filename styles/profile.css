@@ -205,6 +205,20 @@ main{
 }
 
 .operations hr{
-    width: 600px;
+    width: 800px;
     border: 1px solid #3D3B3B;
+}
+
+
+.operations_container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin: 0 30% 0 30%;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+button{
+    cursor: pointer;
 }
