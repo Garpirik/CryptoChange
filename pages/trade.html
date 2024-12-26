@@ -29,14 +29,14 @@
             <div>
             <form>
                 <label>Pay</label>
-                <div class="input_container"><input type="text" /><select><option value="Bitcoin">BTC</option>
+                <div class="input_container"><input type="text" onchange="outputValues()" id="input_pay" /><select id="select_pay" onchange="outputValues()"><option value="Bitcoin">BTC</option>
                     <option value="Ethereum">ETH</option>
                         <option value="USDT">USDT</option>
                 </select></div>
                 <label>Get</label>
-                <div class="input_container"><input type="text" /><select><option value="Bitcoin">BTC</option>
+                <div class="input_container"><input type="text" onchange="outputValues()" id="input_get" readonly /><select id="select_get"  onchange="outputValues()"><option value="Bitcoin">BTC</option>
                     <option value="Ethereum">ETH</option>
-                        <option value="Tether">BTC</option>
+                        <option value="USDT">USDT</option>
                 </select></div>
             </form>
             <button class="button_trade">Trade value</button>
@@ -71,6 +71,34 @@ const options = {
 
 
 
+
+let outputValues = () =>{
+    const paySelect = document.getElementById("select_pay");
+let paySelectedValue = paySelect.options[paySelect.selectedIndex].value;
+const getSelect = document.getElementById("select_get");
+let getSelectedValue = getSelect.options[getSelect.selectedIndex].value;
+const inputPay = document.getElementById("input_pay").value;
+const inputGet =document.getElementById("input_get").value;
+
+    let value = inputPay;
+    {
+    fetch(`https://openapiv1.coinstats.app/coins?limit=1&name=${paySelectedValue}`, options).then(res => res.json()).then(res =>{
+        value= value * res.result[0].price
+      
+    fetch(`https://openapiv1.coinstats.app/coins?limit=1&name=${getSelectedValue}`, options)
+  .then(res => res.json())
+  .then(res =>   document.getElementById("input_get").value = Number(value   / res.result[0].price))
+  .catch(err => console.error(err));
+
+
+    })
+
+
+
+    }
+}
+
+//
 </script>
 </body>
 </html>
